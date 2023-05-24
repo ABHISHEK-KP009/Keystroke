@@ -57,7 +57,7 @@ button[type="submit"]:hover {
 	<h1>Online Assessment</h1>
 	<form id="question-form" action="/question1" method="post">
 		<label for="question"><h3>Question 1:Enter the following text in the text area</h3></label>
-        <p>The quick brown fox jumps over the lazy dog! 1234567890 #@$%^&*()_+-=[]{}|;:'",.<>?/</p>
+        <p>Amidst the bustling city streets, a solitary musician played his melodic tunes, enchanting passersby with his soulful melodies. The notes danced through the air, carrying with them a sense of nostalgia and longing. People paused in their hurried steps, captivated by the ethereal music that seemed to transport them to distant lands and forgotten memories.  </p>
 		<textarea id="question" placeholder="Write your answer here"></textarea>
 		<input type="submit" id="next-btn" value="Next">
 	</form>
@@ -124,14 +124,14 @@ button[type="submit"]:hover {
                     uptime: upTime[i],
                     dwellTime: upTime[i] - downTime[i],
                     flightTime: Math.abs(downTime[i+1] - upTime[i]),
-                    keyDownTime: Math.abs(downTime[i+1] - downTime[i]),
-                    Target: 2
+                    inter_key_latency: Math.abs(downTime[i+1] - downTime[i]),
+                    user_identity: 4
         
                 });
             }
-            let csv = 'Key,Down Time,Up Time,Dwell Time,Flight Time,Key Down Time,Target\n';
+            let csv = 'key,dwell_time,flight_time,inter_key_latency,user_identity\n';
                     for (let i = 0; i < data.length; i++) {
-                        csv += `${data[i].key},${data[i].downtime},${data[i].uptime},${data[i].dwellTime},${data[i].flightTime},${data[i].keyDownTime},${data[i].Target}\n`;
+                        csv += `${data[i].key},${data[i].dwellTime},${data[i].flightTime},${data[i].inter_key_latency},${data[i].user_identity}\n`;
                     }
             
                     // Create a Blob object from the CSV string

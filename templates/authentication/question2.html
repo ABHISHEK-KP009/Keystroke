@@ -52,7 +52,7 @@ button[type="submit"]:hover {
 	<h1>Online Assessment</h1>
 	<form id="question-form">
 		<label for="question"><h3>Question 2:Enter the following text in the text area</h3></label>
-        <p>Jackdaws love my big sphinx of quartz! 1234567890-=!@#$%^&*()_+[]{}|;':.<>/?</p>
+        <p>The sun slowly descended on the horizon, casting a warm golden glow over the tranquil meadow. Wildflowers swayed gently in the soft breeze, painting the landscape with vibrant hues. Birds chirped melodiously, their songs filling the air with a symphony of nature's harmony. </p>
 		<textarea id="question" placeholder="Write your answer here"></textarea>
 		<input type="submit" id="next-btn" value="Next">
 	</form>
@@ -120,14 +120,14 @@ button[type="submit"]:hover {
                     uptime: upTime[i],
                     dwellTime: upTime[i] - downTime[i],
                     flightTime: Math.abs(downTime[i+1] - upTime[i]),
-                    keyDownTime: Math.abs(downTime[i+1] - downTime[i]),
+                    inter_key_latency: Math.abs(downTime[i+1] - downTime[i]),
                     // Target: 2
         
                 });
             }
-            let csv = 'Key,Down Time,Up Time,Dwell Time,Flight Time,Key Down Time,Target\n';
+            let csv = 'key,dwell_time,flight_time,inter_key_latency\n';
                     for (let i = 0; i < data.length; i++) {
-                        csv += `${data[i].key},${data[i].dwellTime},${data[i].flightTime},${data[i].keyDownTime}\n`;
+                        csv += `${data[i].key},${data[i].dwellTime},${data[i].flightTime},${data[i].inter_key_latency}\n`;
                     }
             
                     // Create a Blob object from the CSV string
