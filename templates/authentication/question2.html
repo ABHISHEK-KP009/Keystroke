@@ -121,13 +121,13 @@ button[type="submit"]:hover {
                     dwellTime: upTime[i] - downTime[i],
                     flightTime: Math.abs(downTime[i+1] - upTime[i]),
                     keyDownTime: Math.abs(downTime[i+1] - downTime[i]),
-                    Target: 1
+                    // Target: 2
         
                 });
             }
             let csv = 'Key,Down Time,Up Time,Dwell Time,Flight Time,Key Down Time,Target\n';
                     for (let i = 0; i < data.length; i++) {
-                        csv += `${data[i].key},${data[i].downtime},${data[i].uptime},${data[i].dwellTime},${data[i].flightTime},${data[i].keyDownTime},${data[i].Target}\n`;
+                        csv += `${data[i].key},${data[i].dwellTime},${data[i].flightTime},${data[i].keyDownTime}\n`;
                     }
             
                     // Create a Blob object from the CSV string
