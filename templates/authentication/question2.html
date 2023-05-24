@@ -46,21 +46,17 @@ button[type="submit"]:hover {
         h1 {
             text-align: center;
         }
-        .login-message {
-		  text-align: center;
-		  color: rgb(245, 0, 0);
-		  margin-top: 10px;
-		}
 	</style>
 </head>
 <body>
 	<h1>Online Assessment</h1>
-	<form id="question-form" action="/question1" method="post">
-		<label for="question"><h3>Question 1:Enter the following text in the text area</h3></label>
-        <p>The quick brown fox jumps over the lazy dog! 1234567890 #@$%^&*()_+-=[]{}|;:'",.<>?/</p>
+	<form id="question-form">
+		<label for="question"><h3>Question 2:Enter the following text in the text area</h3></label>
+        <p>Jackdaws love my big sphinx of quartz! 1234567890-=!@#$%^&*()_+[]{}|;':.<>/?</p>
 		<textarea id="question" placeholder="Write your answer here"></textarea>
 		<input type="submit" id="next-btn" value="Next">
 	</form>
+    <button type="submit"><a href="/signout">Signout</a></button>
     <script>
 		    const questionForm = document.getElementById("question-form");
 		
@@ -69,7 +65,7 @@ button[type="submit"]:hover {
 			const formData = new FormData(event.target); // get form data
 			const answer = formData.get('question'); // get the answer
 			//console.log(answer); // replace console.log with your own code to handle the answer
-			window.location.href = "/question2"; // redirect to the next question
+			//window.location.href = "question2.html"; // redirect to the next question
 		});
 	</script>
     <script>

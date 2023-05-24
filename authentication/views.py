@@ -41,9 +41,13 @@ def signin(request):
 
 def question1(request):
     if request.method == 'POST':
-        pass
+        return redirect('../question2')
     return render(request, 'authentication/question1.html')
 
+def question2(request):
+    if request.method == 'POST':
+        pass
+    return render(request, 'authentication/question2.html')
 
 def signout(request):
     logout(request)
