@@ -18,7 +18,7 @@ def signup(request):
         pass1 = request.POST['pass1']
         pass2 = request.POST['pass2']
 
-        # Create a new user instance
+        # Create a new user instance user is created here
         myuser = User.objects.create_user(username=username, email=email, password=pass1)
         
         # Set the additional fields
