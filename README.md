@@ -2,5 +2,5 @@
 #How to check the DB in Django.
    * run this command - python manage.py createsuperuser
    * go to this link - http://localhost:8000/admin
-   * create a super user , username = abhishekk, password = 1234
+   * create a super user , username = abhishekkp, password = 1234
    * 
