@@ -6,20 +6,20 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<style>
         button[type="submit"] {
-  display: block;
-  margin: 10px auto;
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: #5407fa;
-  border: none;
-  border-radius: 3px;
-  cursor: pointer;
-  text-decoration: none;
-  text-align: center;
+        display: block;
+        margin: 10px auto;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #5407fa;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+        text-decoration: none;
+         text-align: center;
 }
 
-button[type="submit"]:hover {
-  background-color: #0056b3;
+    button[type="submit"]:hover {
+    background-color: #0056b3;
 }
         textarea {
             display: block;
@@ -114,7 +114,9 @@ button[type="submit"]:hover {
             }
         });
         wordCount++;
-        
+        // Retrieve the user ID from Django
+        const user_id = {{ request.user.id }};
+
         btn.addEventListener('click', (e) => {
             for (let i = 0; i < Key.length; i++) {
                 const asciiValue = Key[i].charCodeAt(0); 
@@ -125,7 +127,7 @@ button[type="submit"]:hover {
                     dwellTime: upTime[i] - downTime[i],
                     flightTime: Math.abs(downTime[i+1] - upTime[i]),
                     inter_key_latency: Math.abs(downTime[i+1] - downTime[i]),
-                    user_identity: 4
+                    user_identity: user_id
         
                 });
             }

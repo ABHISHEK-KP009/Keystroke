@@ -7,6 +7,8 @@ from django.contrib.auth import authenticate, login, logout
 def home(request):
     return render(request, "authentication/index.html")
 
+from django.contrib.auth.models import User
+
 def signup(request):
     if request.method == 'POST':
         username = request.POST['username']
@@ -16,13 +18,25 @@ def signup(request):
         pass1 = request.POST['pass1']
         pass2 = request.POST['pass2']
 
-        myuser = User.objects.create_user(username, email, pass1)
-        myuser.first_name=fname
-        myuser.last_name=lname
+        # Create a new user instance
+        myuser = User.objects.create_user(username=username, email=email, password=pass1)
+        
+        # Set the additional fields
+        myuser.first_name = fname
+        myuser.last_name = lname
+        
+        # Save the user instance
         myuser.save()
+        
+        # Assign a unique user ID
+        myuser.user_id = myuser.id
+        myuser.save()
+        
         messages.success(request, "Your Account has been successfully created.")
         return redirect('signin')
+    
     return render(request, "authentication/signup.html")
+
 
 def signin(request):
     if request.method == 'POST':
