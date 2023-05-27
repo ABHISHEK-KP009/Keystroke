@@ -72,10 +72,51 @@ input[type="password"] {
   border-radius: 3px;
   border: 1px solid #0e0101;
 }
+.custom-alert-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 10px;
+            background-color: #47d3dad6;
+            z-index: 9999;
+        }
+.custom-alert {
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        background-color: #f8f8f8;
+        color: #333;
+        font-size: 16px;
+    }
+
+    .custom-alert strong {
+        font-weight: bold;
+    }
+
+    .custom-alert button.close {
+        position: relative;
+        top: -2px;
+        right: -5px;
+        padding: 0;
+        background: none;
+        border: none;
+    }
 
 </style>
 </head>
 <body>
+<div class="custom-alert-container"></div>
+  {% for message in messages %}
+  <div class="custom-alert-container alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+      <strong>Message:</strong> {{ message }}
+      <button type="button" class="close" data-dismiss="alert" aria-label="close">
+          <span aria-hidden="true">&times;</span>
+      </button>
+  </div>
+  {% endfor %}
+
+
     <form action="/signin" method="post">
         {% csrf_token %}
         <h3>Sign In</h3>
