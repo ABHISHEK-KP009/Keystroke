@@ -6,6 +6,10 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from gfg import settings
 from django.core.mail import send_mail
+from django.contrib.auth.password_validation import validate_password
+from django.core.exceptions import ValidationError as DjangoValidationError
+from django.contrib.auth import password_validation
+import re
 # Create your views here.
 def home(request):
     return render(request, "authentication/index.html")
@@ -37,10 +41,17 @@ def signup(request):
             messages.error(request, "Passwords doesn't match")
             #return redirect('home')
         
-        if not username.isalnum():
-            messages.error(request, "Username must be Alpha-Numeric!")
+        alphanumeric = re.compile(r'^[0-9a-zA-Z]+$')
+        if not alphanumeric.match(username):
+            messages.error(request, "Username must be alphanumeric!")
             return redirect('home')
         # Create a new user instance user is created here
+        try:
+            validate_password(pass1)
+        except DjangoValidationError as validation_error:
+            messages.error(request, validation_error.messages[0])
+            return redirect('home')
+
         myuser = User.objects.create_user(username=username, email=email, password=pass1)
         
         # Set the additional fields
