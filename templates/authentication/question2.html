@@ -29,6 +29,7 @@ button[type="submit"]:hover {
             border: 2px solid #000;
             font-size: 16px;
             font-weight: bold;
+            background-color: #cae5ee;
         }
         
         
@@ -46,6 +47,15 @@ button[type="submit"]:hover {
         h1 {
             text-align: center;
         }
+        body {
+  font-family: Arial, sans-serif;
+  background-color: #d3b4b4;
+  padding: 20px;
+}
+#next-btn {
+        background-color: #047af8; /* Set the desired background color */
+        color: #fff; /* Set the desired text color */
+    }
 	</style>
 </head>
 <body>
@@ -136,7 +146,7 @@ button[type="submit"]:hover {
                     // Create a download link and trigger the download
                     const link = document.createElement('a');
                     link.href = URL.createObjectURL(blob);
-                    link.download = 'data.csv';
+                    link.download = 'data_test.csv';
                     link.click();
             
                 
