@@ -8,11 +8,15 @@
     <style>
         /* styles.css */
 
-body {
+  body {
   font-family: Arial, sans-serif;
-  background-color: #d3b4b4;
-  padding: 20px;
+  background-image: url('https://img.freepik.com/premium-photo/retro-style-background_522560-5795.jpg?size=626&ext=jpg');
+  background-repeat: no-repeat;
+  background-size: 100% 100%; /* Adjust the background-size property */
+  padding: 300px;
+  background-color: rgba(211, 180, 180, 0.0); /* Adjust the background color's opacity */
 }
+
 
 .alert {
   padding: 15px;
@@ -50,8 +54,8 @@ h3 {
   margin-top: 30px;
 }
 
-h4 {
-  color: #333;
+h1 {
+  color: #fffffffd;
   text-align: center;
   margin-top: 10px;
 }
@@ -101,7 +105,7 @@ a:hover {
     </div>
     {% endfor %}
 
-    <h3> Welcome to Online Examination system </h3>
+    <h1> Welcome to Online Examination system </h1>
 
     {% if user.is_authenticated %}
     <h3>Hello {{ fname }}</h3>
@@ -109,7 +113,7 @@ a:hover {
     <button type="submit"><a href="/signout">Signout</a></button>
     {% else %}
     <!-- <button type="submit"> <a href="/signup">Signup</a></button> -->
-    <p class="login-message">New User? <a href="/signup">Sign Up</a></p>
+    <p class="login-message">New User? <a href="signup">Sign Up</a></p>
     <p class="login-message">Already Registered ?<a href="/signin">Sign In</a></p>
     <!-- <button type="submit"><a href="/signin">Signin</a></button> -->
     {% endif %}
