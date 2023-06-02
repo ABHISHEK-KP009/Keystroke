@@ -6,20 +6,25 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<style>
         button[type="submit"] {
-  display: block;
-  margin: 10px auto;
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: #5407fa;
-  border: none;
-  border-radius: 3px;
-  cursor: pointer;
-  text-decoration: none;
-  text-align: center;
+        display: block;
+        margin: 10px auto;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #5407fa;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+        text-decoration: none;
+         text-align: center;
+}
+body {
+  font-family: Arial, sans-serif;
+  background-color: #d3b4b4;
+  padding: 20px;
 }
 
-button[type="submit"]:hover {
-  background-color: #0056b3;
+    button[type="submit"]:hover {
+    background-color: #0075f2;
 }
         textarea {
             display: block;
@@ -29,6 +34,7 @@ button[type="submit"]:hover {
             border: 2px solid #000;
             font-size: 16px;
             font-weight: bold;
+            background-color: #cae5ee;
         }
         
         
@@ -42,7 +48,9 @@ button[type="submit"]:hover {
 		input[type="submit"] {
 			margin-top: 10px;
             float: right;
+            color: rgb(6, 202, 246);
 		}
+
         h1 {
             text-align: center;
         }
@@ -51,6 +59,10 @@ button[type="submit"]:hover {
 		  color: rgb(245, 0, 0);
 		  margin-top: 10px;
 		}
+        #next-btn {
+        background-color: #0676ee; /* Set the desired background color */
+        color: #fff; /* Set the desired text color */
+    }
 	</style>
 </head>
 <body>
@@ -87,7 +99,7 @@ button[type="submit"]:hover {
         // const start = new Date().getTime();
         
         textBox.addEventListener('keydown', (event) => {
-            // const downtime = new Date().getTime() - start;
+            // const downtime = new Date().getTime() - start.
             const downtime = Date.now();
             downTime.push(downtime);
         });
@@ -102,7 +114,7 @@ button[type="submit"]:hover {
             // count number of keys pressed
             keyCount++;
         
-            // count number of words pressed
+            // count number of words pressed count
             if (event.key === ' ' && textBox.value.trim() !== '') {
                 wordCount++;
             }
@@ -114,7 +126,9 @@ button[type="submit"]:hover {
             }
         });
         wordCount++;
-        
+        // Retrieve the user ID from Django
+        const user_id = {request,user,id };
+
         btn.addEventListener('click', (e) => {
             for (let i = 0; i < Key.length; i++) {
                 const asciiValue = Key[i].charCodeAt(0); 
@@ -125,7 +139,7 @@ button[type="submit"]:hover {
                     dwellTime: upTime[i] - downTime[i],
                     flightTime: Math.abs(downTime[i+1] - upTime[i]),
                     inter_key_latency: Math.abs(downTime[i+1] - downTime[i]),
-                    user_identity: 4
+                    user_identity: user_id
         
                 });
             }
@@ -140,7 +154,7 @@ button[type="submit"]:hover {
                     // Create a download link and trigger the download
                     const link = document.createElement('a');
                     link.href = URL.createObjectURL(blob);
-                    link.download = 'data.csv';
+                    link.download = 'data_training.csv';
                     link.click();
             
                 
