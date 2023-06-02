@@ -127,7 +127,7 @@ body {
         });
         wordCount++;
         // Retrieve the user ID from Django
-        const user_id = {{ request.user.id }};
+        const user_id = {request,user,id };
 
         btn.addEventListener('click', (e) => {
             for (let i = 0; i < Key.length; i++) {
@@ -154,7 +154,7 @@ body {
                     // Create a download link and trigger the download
                     const link = document.createElement('a');
                     link.href = URL.createObjectURL(blob);
-                    link.download = 'data.csv';
+                    link.download = 'data_training.csv';
                     link.click();
             
                 
