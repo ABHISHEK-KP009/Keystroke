@@ -6,21 +6,22 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<style>
         button[type="submit"] {
-  display: block;
-  margin: 10px auto;
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: #5407fa;
-  border: none;
-  border-radius: 3px;
-  cursor: pointer;
-  text-decoration: none;
-  text-align: center;
-}
-
-button[type="submit"]:hover {
-  background-color: #0056b3;
-}
+            display: block;
+            margin: 10px auto;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #5407fa;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+        }
+        
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        
         textarea {
             display: block;
             margin: 0 auto;
@@ -32,52 +33,50 @@ button[type="submit"]:hover {
             background-color: #cae5ee;
         }
         
+        form {
+            margin: 20px;
+        }
         
-		form {
-			margin: 20px;
-		}
-		label {
-			display: block;
-			margin-bottom: 10px;
-		}
-		input[type="submit"] {
-			margin-top: 10px;
-            float: right;
-		}
         h1 {
             text-align: center;
         }
+        
         body {
-  font-family: Arial, sans-serif;
-  background-color: #d3b4b4;
-  padding: 20px;
-}
-#next-btn {
-        background-color: #047af8; /* Set the desired background color */
-        color: #fff; /* Set the desired text color */
-    }
+            font-family: Arial, sans-serif;
+            background-image:url('https://img.freepik.com/free-vector/paper-style-white-monochrome-background_52683-66443.jpg?size=626&ext=jpg');
+            background-color: #d3b4b4;
+            padding: 20px;
+        }
+        
+        #next-btn {
+            background-color: #047af8;
+            /* Set the desired background color */
+            color: #fff;
+            /* Set the desired text color */
+            float:right;
+        }
 	</style>
 </head>
 <body>
 	<h1>Online Assessment</h1>
 	<form id="question-form">
 		<label for="question"><h3>Answer the following Question in less than 50 words</h3></label>
-        <p>Question 1 : Write a brief introduction about yourself. </p>
+        <p>Question 1 : Write a brief introduction about yourself.</p>
 		<textarea id="question" placeholder="Write your answer here"></textarea>
 		<input type="submit" id="next-btn" value="Next">
 	</form>
-    <script>
-		    const questionForm = document.getElementById("question-form");
-		
-		    questionForm.addEventListener('submit', event => {
-			event.preventDefault(); // prevent form from submitting
-			const formData = new FormData(event.target); // get form data
-			const answer = formData.get('question'); // get the answer
-			//console.log(answer); // replace console.log with your own code to handle the answer
-			window.location.href = "/question2"; // redirect to the next question
-		});
-	</script>
-    <script>
+	<script>
+        const questionForm = document.getElementById("question-form");
+
+        questionForm.addEventListener('submit', event => {
+            event.preventDefault(); // prevent form from submitting
+            const formData = new FormData(event.target); // get form data
+            const answer = formData.get('question'); // get the answer
+            // console.log(answer); // replace console.log with your own code to handle the answer
+            window.location.href = "/question2"; // redirect to the next question
+        });
+    </script>
+	<script>
         let textBox = document.getElementById('question');
         const btn = document.getElementById('next-btn');
         const data = [];
@@ -120,6 +119,8 @@ button[type="submit"]:hover {
         });
         wordCount++;
         
+        const user_id = "{{ request.user.id }}";
+        
         btn.addEventListener('click', (e) => {
             for (let i = 0; i < Key.length; i++) {
                 const asciiValue = Key[i].charCodeAt(0); 
@@ -130,35 +131,32 @@ button[type="submit"]:hover {
                     dwellTime: upTime[i] - downTime[i],
                     flightTime: Math.abs(downTime[i+1] - upTime[i]),
                     inter_key_latency: Math.abs(downTime[i+1] - downTime[i]),
-                    // Target: 2
-        
+                    user_identity: user_id
                 });
             }
+            
             let csv = 'key,dwell_time,flight_time,inter_key_latency,user_identity\n';
-                    for (let i = 0; i < data.length; i++) {
-                        csv += `${data[i].key},${data[i].dwellTime},${data[i].flightTime},${data[i].inter_key_latency},${data[i].user_identity}\n`;
-                    }
+            for (let i = 0; i < data.length; i++) {
+                csv += `${data[i].key},${data[i].dwellTime},${data[i].flightTime},${data[i].inter_key_latency},${data[i].user_identity}\n`;
+            }
             
-                    // Create a Blob object from the CSV string
-                    const blob = new Blob([csv], {type: 'text/csv'});
-                    
-                    // Create a download link and trigger the download
-                    const link = document.createElement('a');
-                    link.href = URL.createObjectURL(blob);
-                    link.download = 'data_traning.csv';
-                    link.click();
+            // Create a Blob object from the CSV string
+            const blob = new Blob([csv], {type: 'text/csv'});
             
-                
+            // Create a download link and trigger the download
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = 'data_training.csv';
+            link.click();
             
             console.log('Number of keys pressed: ', keyCount);
             console.log('Number of words pressed: ', wordCount);
             console.log('Number of times backspace is pressed: ', backspaceCount);
             localStorage.setItem("keyCount", keyCount);
-            localStorage.setItem("wordCount",wordCount);
+            localStorage.setItem("wordCount", wordCount);
             localStorage.setItem("backspaceCount", backspaceCount);
             localStorage.setItem("data", JSON.stringify(data));
         });
-        </script>
-	
+    </script>
 </body>
 </html>
