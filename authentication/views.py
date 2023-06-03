@@ -95,7 +95,7 @@ def signin(request):
             # return render(request, "authentication/index.html", {'fname': fname})
         else:
             messages.error(request, "Bad Credentials")
-            return redirect('home')
+            return redirect('signin')
     return render(request, "authentication/signin.html")
 
 def question1(request):
@@ -111,4 +111,4 @@ def question2(request):
 def signout(request):
     logout(request)
     messages.success(request, "Logged Out Succcessfully!")
-    return redirect('home')
+    return render(request, 'authentication/final.html')

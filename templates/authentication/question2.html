@@ -41,9 +41,11 @@ button[type="submit"]:hover {
 			margin-bottom: 10px;
 		}
 		input[type="submit"] {
-			margin-top: 10px;
-            float: right;
-		}
+            display: block;
+            margin: 10px auto;
+            text-align: center;
+        }
+        
         h1 {
             text-align: center;
         }
@@ -61,12 +63,12 @@ button[type="submit"]:hover {
 <body>
 	<h1>Online Assessment</h1>
 	<form id="question-form">
-		<label for="question"><h3>Question 2:Enter the following text in the text area</h3></label>
-        <p>The sun slowly descended on the horizon, casting a warm golden glow over the tranquil meadow. Wildflowers swayed gently in the soft breeze, painting the landscape with vibrant hues. Birds chirped melodiously, their songs filling the air with a symphony of nature's harmony. </p>
+		<label for="question"><h3>Answer the following Question in less than 50 words</h3></label>
+        <p>Question 2 :Which is your preferred social media platform, and why? </p>
 		<textarea id="question" placeholder="Write your answer here"></textarea>
-		<input type="submit" id="next-btn" value="Next">
+		<input type="submit" id="next-btn" value="Sign Out">
 	</form>
-    <button type="submit"><a href="/signout">Signout</a></button>
+    {% comment %} <button type="submit"><a href="/signout">Signout</a></button> {% endcomment %}
     <script>
 		    const questionForm = document.getElementById("question-form");
 		
@@ -75,7 +77,7 @@ button[type="submit"]:hover {
 			const formData = new FormData(event.target); // get form data
 			const answer = formData.get('question'); // get the answer
 			//console.log(answer); // replace console.log with your own code to handle the answer
-			window.location.href = "question2.html"; // redirect to the next question
+			window.location.href = "/signout"; // redirect to the next question
 		});
 	</script>
     <script>

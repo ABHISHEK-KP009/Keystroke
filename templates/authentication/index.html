@@ -8,15 +8,23 @@
     <style>
         /* styles.css */
 
-  body {
-  font-family: Arial, sans-serif;
-  background-image: url('https://img.freepik.com/premium-photo/retro-style-background_522560-5795.jpg?size=626&ext=jpg');
-  background-repeat: no-repeat;
-  background-size: 100% 100%; /* Adjust the background-size property */
-  padding: 300px;
-  background-color: rgba(211, 180, 180, 0.0); /* Adjust the background color's opacity */
-}
-
+        body {
+          font-family: Arial, sans-serif;
+          background-image: url('https://img.freepik.com/premium-photo/retro-style-background_522560-5795.jpg?size=626&ext=jpg');
+          background-repeat: no-repeat;
+          background-size: cover; /* Adjust the background-size property */
+          background-position: center;
+          padding: 10%; /* Adjust the padding value */
+          background-color: rgba(211, 180, 180, 0.0); /* Adjust the background color's opacity */
+        }
+        
+        /* Media query for smaller devices */
+        @media (max-width: 768px) {
+          body {
+            padding: 20px; /* Adjust the padding value for smaller devices */
+          }
+        }
+        
 
 .alert {
   padding: 15px;
@@ -54,9 +62,9 @@ h3 {
   margin-top: 30px;
 }
 
-h1 {
-  color: #fffffffd;
-  text-align: center;
+h1 , h4{
+  color: #000000;
+  text-align:center;
   margin-top: 10px;
 }
 
@@ -107,6 +115,7 @@ a:hover {
 
     <h1> Welcome to Online Examination system </h1>
 
+    <h4> Dear user, this is the research work conducting in SIT under the proctorship of Dr.Jagadamba G, Please complete the test in a go. </h2>
     {% if user.is_authenticated %}
     <h3>Hello {{ fname }}</h3>
     <h4>You are successfully logged in.</h4>
