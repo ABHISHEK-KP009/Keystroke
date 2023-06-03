@@ -6,25 +6,20 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<style>
         button[type="submit"] {
-        display: block;
-        margin: 10px auto;
-        padding: 10px 20px;
-        background-color: #007bff;
-        color: #5407fa;
-        border: none;
-        border-radius: 3px;
-        cursor: pointer;
-        text-decoration: none;
-         text-align: center;
-}
-body {
-  font-family: Arial, sans-serif;
-  background-color: #d3b4b4;
-  padding: 20px;
+  display: block;
+  margin: 10px auto;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #5407fa;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
 }
 
-    button[type="submit"]:hover {
-    background-color: #0075f2;
+button[type="submit"]:hover {
+  background-color: #0056b3;
 }
         textarea {
             display: block;
@@ -48,28 +43,26 @@ body {
 		input[type="submit"] {
 			margin-top: 10px;
             float: right;
-            color: rgb(6, 202, 246);
 		}
-
         h1 {
             text-align: center;
         }
-        .login-message {
-		  text-align: center;
-		  color: rgb(245, 0, 0);
-		  margin-top: 10px;
-		}
-        #next-btn {
-        background-color: #0676ee; /* Set the desired background color */
+        body {
+  font-family: Arial, sans-serif;
+  background-color: #d3b4b4;
+  padding: 20px;
+}
+#next-btn {
+        background-color: #047af8; /* Set the desired background color */
         color: #fff; /* Set the desired text color */
     }
 	</style>
 </head>
 <body>
 	<h1>Online Assessment</h1>
-	<form id="question-form" action="/question1" method="post">
-		<label for="question"><h3>Question 1:Enter the following text in the text area</h3></label>
-        <p>Amidst the bustling city streets, a solitary musician played his melodic tunes, enchanting passersby with his soulful melodies. The notes danced through the air, carrying with them a sense of nostalgia and longing. People paused in their hurried steps, captivated by the ethereal music that seemed to transport them to distant lands and forgotten memories.  </p>
+	<form id="question-form">
+		<label for="question"><h3>Answer the following Question in less than 50 words</h3></label>
+        <p>Question 1 : Write a brief introduction about yourself. </p>
 		<textarea id="question" placeholder="Write your answer here"></textarea>
 		<input type="submit" id="next-btn" value="Next">
 	</form>
@@ -99,7 +92,7 @@ body {
         // const start = new Date().getTime();
         
         textBox.addEventListener('keydown', (event) => {
-            // const downtime = new Date().getTime() - start.
+            // const downtime = new Date().getTime() - start;
             const downtime = Date.now();
             downTime.push(downtime);
         });
@@ -114,7 +107,7 @@ body {
             // count number of keys pressed
             keyCount++;
         
-            // count number of words pressed count
+            // count number of words pressed
             if (event.key === ' ' && textBox.value.trim() !== '') {
                 wordCount++;
             }
@@ -126,9 +119,7 @@ body {
             }
         });
         wordCount++;
-        // Retrieve the user ID from Django
-        const user_id = {request,user,id };
-
+        
         btn.addEventListener('click', (e) => {
             for (let i = 0; i < Key.length; i++) {
                 const asciiValue = Key[i].charCodeAt(0); 
@@ -139,7 +130,7 @@ body {
                     dwellTime: upTime[i] - downTime[i],
                     flightTime: Math.abs(downTime[i+1] - upTime[i]),
                     inter_key_latency: Math.abs(downTime[i+1] - downTime[i]),
-                    user_identity: user_id
+                    // Target: 2
         
                 });
             }
@@ -154,7 +145,7 @@ body {
                     // Create a download link and trigger the download
                     const link = document.createElement('a');
                     link.href = URL.createObjectURL(blob);
-                    link.download = 'data_training.csv';
+                    link.download = 'data_traning.csv';
                     link.click();
             
                 
