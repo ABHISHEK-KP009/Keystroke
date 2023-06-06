@@ -32,11 +32,9 @@ SECRET_KEY = 'django-insecure-tbukd!u-2#uihmc8#k%996l1^jqf0ud6&le-0$tqf+$js_v8)l
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-<<<<<<< HEAD
 ALLOWED_HOSTS = ['127.0.0.1','online-examinationportal.herokuapp.com/']
-=======
-ALLOWED_HOSTS = ['127.0.0.1']
->>>>>>> origin/master
+
+
 
 
 # Application definition
