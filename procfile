@@ -1,3 +1,2 @@
 
-web: gunicorn keystroke.wsgi --log-file -
-
+web: gunicorn Keystroke.wsgi --log-file -
