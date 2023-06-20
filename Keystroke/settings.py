@@ -60,7 +60,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'gfg.urls'
+ROOT_URLCONF = 'Keystroke.urls'
 
 TEMPLATES = [
     {
@@ -78,7 +78,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'gfg.wsgi.application'
+WSGI_APPLICATION = 'Keystroke.wsgi.application'
 
 
 # Database
