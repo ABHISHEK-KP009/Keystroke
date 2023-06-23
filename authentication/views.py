@@ -33,24 +33,24 @@ def signup(request):
             messages.error(request, "Email already registered!")
             return redirect('home')
         
-        if len(username)>10:
-            messages.error(request, "Username must be under 10 characters")
-            #return redirect('home')
+        # if len(username)>10:
+        #     messages.error(request, "Username must be under 10 characters")
+        #     #return redirect('home')
         
         if pass1 != pass2:
             messages.error(request, "Passwords doesn't match")
             #return redirect('home')
         
-        alphanumeric = re.compile(r'^[0-9a-zA-Z]+$')
-        if not alphanumeric.match(username):
-            messages.error(request, "Username must be alphanumeric!")
-            return redirect('home')
-        # Create a new user instance user is created here
-        try:
-            validate_password(pass1)
-        except DjangoValidationError as validation_error:
-            messages.error(request, validation_error.messages[0])
-            return redirect('home')
+        # alphanumeric = re.compile(r'^[0-9a-zA-Z]+$')
+        # if not alphanumeric.match(username):
+        #     messages.error(request, "Username must be alphanumeric!")
+        #     return redirect('home')
+        # # Create a new user instance user is created here
+        # try:
+        #     validate_password(pass1)
+        # except DjangoValidationError as validation_error:
+        #     messages.error(request, validation_error.messages[0])
+        #     return redirect('home')
 
         myuser = User.objects.create_user(username=username, email=email, password=pass1)
         
